@@ -1,0 +1,96 @@
+﻿Exportfile for AOT version 1.0 or later
+Formatversion: 1
+
+***Element: CLS
+
+; Microsoft Dynamics AX Class: EES_Batch4DemoClass unloaded
+; --------------------------------------------------------------------------------
+  CLSVERSION 1
+  
+  CLASS #EES_Batch4DemoClass
+    PROPERTIES
+      Name                #EES_Batch4DemoClass
+      Extends             #RunBaseBatch
+      Origin              #{C4CB120F-F737-4A3D-944D-8DECA63D8C43}
+    ENDPROPERTIES
+    
+    METHODS
+      SOURCE #canGoBatchJournal
+        #protected boolean canGoBatchJournal()
+        #{
+        #
+        #
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #classDeclaration
+        #class EES_Batch4DemoClass extends RunBaseBatch
+        #{
+        #    #DEFINE.CurrentVersion(1)
+        #
+        #
+        #}
+        #
+      ENDSOURCE
+      SOURCE #pack
+        #public container pack()
+        #{
+        #
+        #
+        #    return [#CurrentVersion];
+        #}
+      ENDSOURCE
+      SOURCE #run
+        #void run()
+        #{
+        #    ;
+        #    //put logic here
+        #    info("running test batch");
+        #}
+      ENDSOURCE
+      SOURCE #runsImpersonated
+        #public boolean runsImpersonated()
+        #{
+        #
+        #    return true;
+        #}
+      ENDSOURCE
+      SOURCE #unpack
+        #public boolean unpack(container packedClass)
+        #{
+        #    //Deserializes the packedClass parameter value to an instance of the RunBase class.
+        #    boolean         isSuccessful;
+        #    Version         version = RunBase::getVersion(packedClass);
+        #    container       base;
+        #    ;
+        #
+        #    switch (version)
+        #    {
+        #        case #CurrentVersion:
+        #        {
+        #            [version, base] = packedClass;
+        #            isSuccessful = true;
+        #
+        #            break;
+        #        }
+        #        default :
+        #            return false;
+        #    }
+        #
+        #    return isSuccessful;
+        #}
+      ENDSOURCE
+      SOURCE #main
+        #public static void main(Args args)
+        #{
+        #    // instantiate and object of our class and run it
+        #    EES_Batch4DemoClass self = new EES_Batch4DemoClass();
+        #    ;
+        #
+        #    self.run();
+        #}
+      ENDSOURCE
+    ENDMETHODS
+  ENDCLASS
+
+***Element: END
